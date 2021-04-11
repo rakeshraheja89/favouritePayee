@@ -16,8 +16,8 @@ public class FavoritePayee   {
 	
 	@Id  
     @Column 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+   // @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 	
 	@Column(name="customer_name")
     private String customerName;
@@ -63,6 +63,14 @@ public class FavoritePayee   {
 		this.bankName = bankName;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -70,6 +78,7 @@ public class FavoritePayee   {
 		result = prime * result + ((bankName == null) ? 0 : bankName.hashCode());
 		result = prime * result + ((customerName == null) ? 0 : customerName.hashCode());
 		result = prime * result + ((ibanCode == null) ? 0 : ibanCode.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((payeeName == null) ? 0 : payeeName.hashCode());
 		return result;
 	}
@@ -98,6 +107,8 @@ public class FavoritePayee   {
 				return false;
 		} else if (!ibanCode.equals(other.ibanCode))
 			return false;
+		if (id != other.id)
+			return false;
 		if (payeeName == null) {
 			if (other.payeeName != null)
 				return false;
@@ -108,9 +119,9 @@ public class FavoritePayee   {
 
 	@Override
 	public String toString() {
-		return "FavoritePayee [customerName=" + customerName + ", payeeName=" + payeeName + ", ibanCode=" + ibanCode
-				+ ", bankName=" + bankName + "]";
+		return "FavoritePayee [id=" + id + ", customerName=" + customerName + ", payeeName=" + payeeName + ", ibanCode="
+				+ ibanCode + ", bankName=" + bankName + "]";
 	}
-    
 
+	
 }

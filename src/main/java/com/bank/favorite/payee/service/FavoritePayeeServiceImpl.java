@@ -2,6 +2,7 @@
 package com.bank.favorite.payee.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,17 +19,33 @@ public class FavoritePayeeServiceImpl implements FavoritePayeeService {
 	@Override
 	public String deleteBankData(FavoritePayee favoritePayee) {
 		favoritePayeeRepository.delete(favoritePayee);
+		// ID id = favoritePayee.getId();
+		// favoritePayeeRepository.deleteById(favoritePayee.getId());
 		return "200";
 	}
 
+
 	@Override
 	public String updateBankData(FavoritePayee favoritePayee) {
-		if (favoritePayee.getIbanCode() != null) {
-			favoritePayee.setIbanCode(favoritePayee.getIbanCode().substring(4, 8));
+		Optional<FavoritePayee> bankFinanceObj = favoritePayeeRepository.findById(favoritePayee.getId());
+		String ibanCode = favoritePayee.getIbanCode();
+		if (ibanCode != null && ibanCode.length() >= 8) {
+			ibanCode=favoritePayee.getIbanCode().substring(4, 8);
+			// getting details via rest template
+			// String bankDetails = favoritePayeeRepository.getBankDetails();
 		}
-		// getting details via rest template
-		// String bankDetails = favoritePayeeRepository.getBankDetails();
-		favoritePayeeRepository.save(favoritePayee);
+		
+		if (bankFinanceObj.isPresent()) {
+			FavoritePayee newEntity = bankFinanceObj.get();
+			newEntity.setBankName(favoritePayee.getBankName());
+			newEntity.setCustomerName(favoritePayee.getCustomerName());
+			newEntity.setId(favoritePayee.getId());
+			newEntity.setPayeeName(favoritePayee.getPayeeName());
+			newEntity.setIbanCode(favoritePayee.getIbanCode());
+			favoritePayeeRepository.save(newEntity);
+		} else {
+			favoritePayeeRepository.save(favoritePayee);
+		}
 		return "200";
 	}
 }
