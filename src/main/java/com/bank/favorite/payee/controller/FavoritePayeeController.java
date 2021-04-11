@@ -35,8 +35,10 @@ public class FavoritePayeeController {
 	}
 	
 	@PostMapping("/create")
-	public String insertBankData() {
-		return null;
+	@Operation(summary = "/create")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "/create") })
+	public String insertBankData(@RequestBody FavoritePayee favoritePayee) {
+		return favoritePayeeService.createBankData(favoritePayee);
 	}
 	
 	@PutMapping("/update")

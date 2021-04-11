@@ -8,4 +8,6 @@ public interface FavoritePayeeService {
 
 	String updateBankData(FavoritePayee favoritePayee);
 
+	String createBankData(FavoritePayee favoritePayee);
+
 }

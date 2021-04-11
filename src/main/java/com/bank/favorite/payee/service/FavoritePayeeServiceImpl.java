@@ -48,4 +48,11 @@ public class FavoritePayeeServiceImpl implements FavoritePayeeService {
 		}
 		return "200";
 	}
+
+
+	@Override
+	public String createBankData(FavoritePayee favoritePayee) {
+		favoritePayeeRepository.save(favoritePayee);
+		return "200";
+	}
 }
