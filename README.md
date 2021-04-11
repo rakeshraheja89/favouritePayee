@@ -12,6 +12,45 @@ https://spring.io/guides/gs/spring-boot/
 https://www.blazemeter.com/blog/spring-boot-rest-api-unit-testing-with-junit
 
 
+1) Git Hub :- public 
+1.1) Spring boot Hexagon pattern with JPA integration 
+1.2) Two MS *) LOgin and Cutomer
+			*) The Bank 5 - 8th 
+1.3) Swagger config for All the APIs
+1.3) Log4j and Exception Handling with @controller advice 
+reviewrs: 
+Approval from 1
+Master
+2) Test cases service - Junit 5 cases  
+3) Sonar Qube and test case 
+
+
+Priority Tasks To be done
+1) Two MS 
+	Coding for Login  port :-7098 
+	                 *) Login/ : POST method : Praveen : GLobal Exception 
+					 *) Favorite Payee Summary : GET [ehcache] : Santosh 
+					 *) Create favorite payee : post Santosh 
+					 *) Edit payees details(Payees name[Input]) : PUT method / Santosh 
+					 *) Delete an existing payee List[Payees name ] : DELETE /Prasanjith
+					 
+	Bank Name based on the Account Number: port :-7099
+	1) Table bank Details : DB 
+	2) Get Method/Account Number : BankName / prasanjith 
+  	
+	
+	1) Rakesh 
+	2) Santosh 
+	
+	   1) Praveen and rakesh 
+				
+
+Priority 2 tasks 
+1) 		Code Coverage 
+Review change incoporation : respective owners 
+
+2) pagination 
+
 # Spring Boot Web MVC QuickStart
 
 This example demonstrates how you can use Spring Boot and Spring MVC on Kubernetes or OpenShift to implement a REST service.
