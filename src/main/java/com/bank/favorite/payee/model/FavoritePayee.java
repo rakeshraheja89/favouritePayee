@@ -1,15 +1,34 @@
 package com.bank.favorite.payee.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table (name="favorite_payee")
 public class FavoritePayee   {
     /**
 	 * 
 	 */
+	
+	@Id  
+    @Column 
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+	
+	@Column(name="customer_name")
     private String customerName;
     
+	@Column(name="payee_name")
     private String payeeName;
     
+	@Column(name="iban_code")
     private String ibanCode;
     
+	@Column(name="bank_name")
     private String bankName;
 
 	public String getCustomerName() {
